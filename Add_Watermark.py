@@ -9,6 +9,7 @@ import numpy as np
 import csv
 from PIL import Image, ImageDraw, ImageFont
 
+
 def add_watermark(path, seed, pos):
     '''
     This function should add a watermark to the picture.
@@ -25,8 +26,8 @@ def add_watermark(path, seed, pos):
     wm = gen_watermark(seed, pos, width, height)
     out = Image.alpha_composite(im, wm)
 
-
     return out
+
 
 def gen_watermark(seed, pos, width, height):
     '''
@@ -39,16 +40,18 @@ def gen_watermark(seed, pos, width, height):
     '''
 
     txt = Image.new('RGBA', (width, height),  (255, 255, 255, 0))
-    fnt = ImageFont.truetype('C:\Windows\Fonts\Arial.ttf', 40) # you might want to edit this part.
+    # you might want to edit this part.
+    fnt = ImageFont.truetype('arial.ttf', 40)
     d = ImageDraw.Draw(txt)
     d_w = np.ceil(width * pos[0])
     d_h = np.ceil(height * pos[1])
-    d.text((d_w, d_h), seed, font=fnt ,fill=(255, 255, 255, 255))
+    d.text((d_w, d_h), seed, font=fnt, fill=(255, 255, 255, 255))
     return txt
 
+
 if __name__ == "__main__":
-    image_path = 'test.png'
+    image_path = 'src/OG.png'
     code = 'AA0010'
     pos = [0.5, 0.5]
     image_wm = add_watermark(image_path, code, pos)
-    image_wm.save('test_text.png')
+    image_wm.save('dist/test_text.png')
