@@ -1,3 +1,3 @@
-## Midterm Project
-BestGroupEver
-FE 595 course repo
+# Midterm Project
+## BestGroupEver - Financial Technology (FE595)
+
