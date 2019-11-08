@@ -3,7 +3,7 @@ This file should decode the information in watermarked pic and return the encode
 Author: Will Long
 Date: 11/05/2019
 '''
-
+import os
 import numpy as np
 import cv2
 import pytesseract
@@ -11,7 +11,12 @@ from skimage.measure import compare_ssim
 from matplotlib import pyplot as plt
 
 # We need to add tesseract to the right file path. Do later?
-pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract'
+
+
+def set_tesseract_executable():
+    pytesseract.pytesseract.tesseract_cmd = os.getenv('TESSERACT_EXECUTABLE')
+    return
+
 
 def get_diff(im1, im2):
     '''
@@ -31,6 +36,7 @@ def get_diff(im1, im2):
     diff = (diff * 255).astype("uint8")
     return diff, score
 
+
 def decode_info(image):
     '''
     This function should return the encoded info in the gray scale image from get_diff.
@@ -40,6 +46,7 @@ def decode_info(image):
 
     txt = pytesseract.image_to_string(image)
     return txt
+
 
 def decode_watermark(image):
     '''
@@ -58,14 +65,11 @@ def decode_watermark(image):
 
     return code
 
+
 if __name__ == "__main__":
 
-    og_image = r'C:\Users\Will\PycharmProjects\FE_595_Project\Watermark\test.png'
-    wm_image = r'C:\Users\Will\PycharmProjects\FE_595_Project\Watermark\test_text.png'
+    og_image = '/Users/shujaatbakhsh/Documents/BestGroupEver/src/Test4.png'
+    wm_image = '/Users/shujaatbakhsh/Documents/BestGroupEver/dest/IC_Wiener3000/Test4.png'
     diff, score = get_diff(og_image, wm_image)
     code = decode_watermark(wm_image)
     print(code)
-
-
-
-
