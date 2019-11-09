@@ -40,7 +40,6 @@ def gen_watermark(seed, pos, width, height):
     '''
 
     txt = Image.new('RGBA', (width, height),  (255, 255, 255, 0))
-    # you might want to edit this part.
     fnt = ImageFont.truetype(os.getenv('FONT_FILE'), 40)
     d = ImageDraw.Draw(txt)
     d_w = np.ceil(width * pos[0])
@@ -50,7 +49,7 @@ def gen_watermark(seed, pos, width, height):
 
 
 if __name__ == "__main__":
-    image_path = 'test.png'
+    image_path = 'test.png'  # mention path of image to be watermarked
     code = 'AA0010'
     pos = [0.5, 0.5]
     image_wm = add_watermark(image_path, code, pos)

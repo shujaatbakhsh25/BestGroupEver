@@ -1,13 +1,11 @@
 import os
 import csv
 import shutil
-from dotenv import load_dotenv
 from Add_Watermark import *
-
-load_dotenv(os.path.join(os.getcwd(), '.env'))
 
 
 def createUserList():
+    """ Creates a list of tuples with username and code from csv file """
     users = []
 
     with open(os.path.join(os.getcwd(), 'src', 'users.csv')) as infile:
@@ -19,6 +17,8 @@ def createUserList():
 
 
 def makeUserDirectories():
+    """ Makes user directories in the dest folder. 
+    Deletes present directories and creates new ones."""
     try:
         shutil.rmtree(os.path.join(os.getcwd(), 'dest'))
     except Exception as e:
@@ -34,6 +34,8 @@ def makeUserDirectories():
 
 
 def watermark():
+    """ Watermarks all the images in src folder for each user.
+    Puts the watermarked image in the dest folder under each user's directory. """
     users = createUserList()
     for i in [f for f in os.listdir(os.path.join(os.getcwd(), 'src')) if f.endswith('.png')]:
         for user in users:
