@@ -6,7 +6,7 @@ This is the code for digital watermarking of images. We have built a model which
 
 ### Requirements
 1. `pip install -r requirements.txt`
-2. `.env'` file consiting of `TESSERACT_EXECUTABLE="/usr/local/Cellar/tesseract/4.1.0/bin/tesseract"` and `FONT_FILE="/file_location/arial.ttf"`
+2. `.env` file consiting of `TESSERACT_EXECUTABLE="/usr/local/Cellar/tesseract/4.1.0/bin/tesseract"` and `FONT_FILE="/file_location/arial.ttf"`
 
 ### Usage
 Once dependencies are installed, download the project directory and just run this.
