@@ -6,7 +6,7 @@ This is the code for digital watermarking of images. We have built a model which
 
 ### Requirements
 1. `pip install -r requirements.txt`
-2. Download Tesseract [here](https://github.com/tesseract-ocr/tesseract/wiki/Downloads)
+2. Download Tesseract from [here](https://github.com/tesseract-ocr/tesseract/wiki/Downloads).
 
 ### Usage
 Once dependencies are installed, download the project directory and just run this.
