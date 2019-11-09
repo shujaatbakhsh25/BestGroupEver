@@ -13,4 +13,4 @@ Once dependencies are installed, download the project directory and just run thi
 
 `python3 main.py`
 
-That's it! Program loads the orginal images from src folder and stores the watermarked images to dest folder consisting of individual users. We can identify the original user with which the image file was shared by reading the watermarked image.
+That's it! Program loads the orginal images from `src` folder and stores the watermarked images to `dest` folder consisting of individual users. We can identify the original user with which the image file was shared by reading the watermarked image.
