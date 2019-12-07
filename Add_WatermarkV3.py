@@ -140,9 +140,10 @@ def add_watermark(path, seed, alp, method):
 
 
 if __name__ == "__main__":
-    image_path = r'C:\Users\doom6\Documents\Python projects\FE_595_Project\Watermark\Test.png'
-    seed = """ASDFGHJ"""
+    image_path = 'Test.jpg'
+    seed = ['ASDFGHJ', 'QWERTYY', 'ZXZXCVB', 'JKHUDNJ']
     alp = 0.5
     method = 'haar'
-    image_watermark = add_watermark(image_path, seed, alp, method)
-    cv2.imwrite(r'C:\Users\doom6\Documents\Python projects\FE_595_Project\Watermark\Test_W.png', image_watermark)
+    n = 3
+    image_watermarks = add_watermark(image_path, seed, alp, method, n)
+    cv2.imwrite('Test_W.jpg', image_watermarks[0])
