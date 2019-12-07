@@ -113,16 +113,29 @@ def add_watermark(path, seed, alp, method):
     for c in range(3):
         A = colors[c]
         coeffs = pywt.wavedec2(A, method)
-        np_coeffs = [np.asarray(x) for x in coeffs]
-        for j in range(len(coeffs[-2])):
-            B = coeffs[-2][j]
-            Bp = code_embed(B, w, alp)
-            np_coeffs[-2][j] = Bp
+        
+        #Adding a loop to input multiple seeds
 
-        Aw = image_rec(np_coeffs, method)
-        colors_w.append(Aw)
+        for k in range(len(seed_list)):
+            seed = seed_list[k]
+            colors_w = []
+            w = con_to_bit(seed, n)
 
-    img_w = cv2.merge(colors_w)
+            np_coeffs = [np.asarray(x) for x in coeffs]
+            for j in range(len(coeffs[-2])):
+                B = coeffs[-2][j]
+                Bp = code_embed(B, w, alp)
+                np_coeffs[-2][j] = Bp
+
+            new_coeffs = [np_coeffs[0]]
+            for i in range(1, len(np_coeffs)):
+                new_coeffs.append((np_coeffs[i][0],np_coeffs[i][1], np_coeffs[i][2]))
+
+            Aw = image_rec(new_coeffs, method)
+            colors_w.append(Aw)
+        img_w = cv2.merge(colors_w)
+        im_list.append(img_w)
+    #end of loop. It basically changes output from one image to a set of images
     return img_w
 
 
