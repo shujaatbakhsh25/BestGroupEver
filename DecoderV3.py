@@ -1,7 +1,6 @@
 import numpy as np
 import cv2
 import pywt
-
 import pyzbar.pyzbar as pyzbar
 import qrcode
 from Add_WatermarkV3 import con_to_bit
@@ -17,13 +16,9 @@ def code_ext(OG, W,  L, alp, n):
     :return: the bit stream
     '''
 
-    '''This part doesn't work. Not sure why. :/'''
-
     if OG.shape != W.shape: return 'Error: Wrong shapes'
     OG = OG.flatten()
     W = W.flatten()
-    #diff = np.absolute(OG - W)
-    #diff[diff > 100] = 0 #this gets rid of errors, I hope.
     ind = np.argpartition(OG, -L*n)[-L*n:]
 
     w = []
@@ -34,11 +29,7 @@ def code_ext(OG, W,  L, alp, n):
 
     w_v = np.array(w).reshape((n,L))
     w_a = w_avg(w_v)
-
-
     return w_a
-
-def w_avg(data):
 
 def blank_QR():
     qr = qrcode.QRCode(
@@ -49,12 +40,12 @@ def blank_QR():
     )
     qr.add_data('')
     qr.make(fit=True)
-
     img = qr.make_image(fill_color="black", back_color="white")
     img_array = np.array(img)
     img_bin = img_array.astype(int)
     img_bin = np.uint8(img_bin)
     return img_bin
+
 def make_QR(string):
     '''
     This should take a binary string and turn it into a QR code.
@@ -79,11 +70,7 @@ def make_QR(string):
         ret, im_fin = cv2.threshold(im_big, 127, 255, cv2.THRESH_BINARY)
         im_bin = im_fin
         k +=1
-
-
-
     return im_fin
-
 
 def decode_QR(string):
     '''
@@ -91,7 +78,6 @@ def decode_QR(string):
     :param string: binary string
     :return: the encoded info
     '''
-
     im_fin = make_QR(string)
     decoded = pyzbar.decode(im_fin)
     if len(decoded) == 0: ans = 0
@@ -106,17 +92,12 @@ def decode_bit(w):
     '''
 
     L = len(w)
-
     bi_str = []
     for i in range(L):
         if w[i] == 1: bi_str.append('1')
         if w[i] == -1: bi_str.append('0')
 
-
-    #code = bi_str
-    #code = decode_binary_string(bi_str)
     code = decode_QR(bi_str)
-
     return code
 
 def decode_watermark(path_OG, path_W, L, alp, method, n):
@@ -149,7 +130,6 @@ def decode_watermark(path_OG, path_W, L, alp, method, n):
         bits.append(w)
     bits = np.array(bits)
     codes = [0,0,0]
-
     w_a = w_avg(bits)
     avg_code = decode_bit(w_a)
     #avg_code = 0
@@ -184,7 +164,6 @@ def encode_QR(string):
     return img_flat
 
 
-
 def decode_test(path_OG, path_W, L, alp, method, seed, n):
     '''
     This shows the error in the watermarked info.
@@ -217,13 +196,10 @@ def decode_test(path_OG, path_W, L, alp, method, seed, n):
         w = w_avg(np.array(color_bits))
         bits.append(w)
     bits = np.array(bits)
-
     w_edit = w_avg(bits)
     diff = np.absolute(w_og - w_edit)
     error = sum(diff) / (2 * len(diff))
-
     return error, w_og, w_edit
-
 
 
 if __name__ == "__main__":
