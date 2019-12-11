@@ -1,19 +1,12 @@
-'''
-This file should add a barium pill, i.e. a watermark, that we can use to trace the follow of a picture.
-Author: Will Long
-Date: 11/27/2019
-'''
-
 import numpy as np
 import cv2
 import pywt
-import reedsolo as reed
 import qrcode
 
 
 def image_rec(coeffs, method):
     '''
-    This should reconstruct an image from the DWT coeffs in a usable way
+    Reconstructing an image from the DWT coeffs in a usable way
     :param coeffs: NP array, DWT coeffs
     :param method: String, method used for the reconstruction
     :return: NP array for the image
@@ -25,7 +18,7 @@ def image_rec(coeffs, method):
 
 def code_embed(A, w, alp):
     '''
-    This should embed a bit stream into the array A.
+    Embedding a bit stream into the array A.
     :param A: Array, the cover array
     :param w: List of {-1,1}, the bit stream
     :param alp: float on [0,1], the strength of the watermark
@@ -36,28 +29,18 @@ def code_embed(A, w, alp):
     A = A.flatten()
     L = len(w)
     A_cut = A
-    #A_cut[A>200] = 0 # maybe I should cut off really big values?
-
     ind = np.argpartition(A_cut, -L)[-L:]
     k = 0
     for i in ind:
         a = A[i] + alp * A[i] * w[k]
         A[i] = a
         k += 1
-    '''
-    for i in range(L):
-        if w[i] == 1 and A[i] < A[i+1]:
-            A[i+1], A[i] = A[i], A[i+1]
-        elif w[i] == -1 and A[i] > A[i+1]:
-            A[i + 1], A[i] = A[i], A[i + 1]
-    '''
-
     A = np.reshape(A, shape)
     return A
 
 def encode_QR(string):
     '''
-    This fun should take a string, encode it in a QR code, flatten the QR code into a 1D Array, and return that array.
+    This function takes a string, encodes it in a QR code, flattens the QR code into a 1D Array, and returns that array.
     :param string: String
     :return: 1D array of {0,1}
     '''
@@ -76,18 +59,18 @@ def encode_QR(string):
     img_flat = img_bin.flatten()
     return img_flat
 
-def con_to_bit(string):
+def con_to_bit(string, n):
     '''
-    this should convert a string into a binary array of {-1,1}
+    This function converts a string into a binary array of {-1,1}
     :param string: String
+    :param n: int
     :return: binary array of {-1,1}
     '''
-    '''
-    rs = reed.RSCodec(100)  # This should help with errors. I think.
 
-    res = bin(int.from_bytes(rs.encode(string.encode()), 'big'))
-    '''
-    res = encode_QR(string).astype(str)
+    res1 = encode_QR(string).astype(str)
+    res = []
+    for i in range(n):
+        res.extend(res1)
     a = []
     for i in range(len(res)):
         if res[i] == '1': a.append(1)
@@ -95,25 +78,25 @@ def con_to_bit(string):
 
     return np.array(a)
 
-def add_watermark(path, seed, alp, method):
+def add_watermark(path, seed_list, alp, method, n):
     '''
-    This function should add a watermark to the picture using DWT.
+    This function adds a watermark to the picture using DWT.
     :param path: String, the file path of the picture
-    :param seed:  String, the code used to generate the watermark
+    :param seed_list:  Array of Strings, the codes used to generate the watermark
     :param alp: float on [0,1], the strength of the watermark
     :param method: String, method used for the DWT
-    :return: Array, the watermarked image
+    :param n: int
+    :return: Array, the watermarked images
     '''
 
     img = cv2.imread(path)
     colors = cv2.split(img) # You have to split the colors, otherwise DWT doesn't work.
-    colors_w = []
-    w = con_to_bit(seed)
+    im_list = []
+
 
     for c in range(3):
         A = colors[c]
         coeffs = pywt.wavedec2(A, method)
-        
         #Adding a loop to input multiple seeds
 
         for k in range(len(seed_list)):
@@ -136,8 +119,8 @@ def add_watermark(path, seed, alp, method):
         img_w = cv2.merge(colors_w)
         im_list.append(img_w)
     #end of loop. It basically changes output from one image to a set of images
-    return img_w
 
+    return im_list
 
 if __name__ == "__main__":
     image_path = 'Test.jpg'
