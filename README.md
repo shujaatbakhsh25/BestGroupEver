@@ -1,4 +1,4 @@
-# Digital Watermarking of Images
+# Digital Watermarking and Detection of Images
 
 ## BestGroupEver - Final Project | Financial Technology (FE595)
 
@@ -24,3 +24,7 @@ This is the code for digital watermarking of images. We have built a model which
 - Run `python3 main.py` (`main.py` program calls `Add_WatermarkV3.py` to generate a list of unique images/arrays for the users defined in `users.csv`)
 - That's it! Program loads all the orginal images from `src` folder and stores the watermarked images to `dest` folder consisting of individual users. 
 - We can identify the original user with which the image file was shared by reading and decoding the watermarked image.
+
+### Results
+
+Here are some of the results comparing original and watermarked images
