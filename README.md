@@ -32,5 +32,7 @@ Here are some of the results comparing original and watermarked images
 ![](https://github.com/shujaatbakhsh25/BestGroupEver/blob/PreetyV-patch-2/src/Test6.png) ![](https://github.com/shujaatbakhsh25/BestGroupEver/blob/PreetyV-patch-2/dest/IC_Wiener3000/Test6.png)
 <p align="center">
   <img src="https://github.com/shujaatbakhsh25/BestGroupEver/blob/PreetyV-patch-2/src/Test6.png" width="350" title="hover text">
-  <img src="https://github.com/shujaatbakhsh25/BestGroupEver/blob/PreetyV-patch-2/src/Test6.png" width="350" alt="accessibility text">
+  <img src="https://github.com/shujaatbakhsh25/BestGroupEver/blob/PreetyV-patch-2/dest/IC_Wiener3000/Test6.png" width="350" alt="accessibility text">
+  <img src="https://github.com/shujaatbakhsh25/BestGroupEver/blob/PreetyV-patch-2/src/Test5.png" width="350" title="hover text">
+  <img src="https://github.com/shujaatbakhsh25/BestGroupEver/blob/PreetyV-patch-2/dest/IC_Wiener3000/Test5.png" width="350" title="hover text">
 </p>
