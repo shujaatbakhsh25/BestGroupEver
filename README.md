@@ -1,6 +1,6 @@
 # Digital Watermarking
 
-## BestGroupEver - Midterm Project | Financial Technology (FE595)
+## BestGroupEver - Final Project | Financial Technology (FE595)
 
 ### Overview
 
@@ -20,4 +20,5 @@ This is the code for digital watermarking of images. We have built a model which
 - Make sure the current directory is the project root directory.
 - Put the images to be watermarked in `src` folder
 - Run `python3 main.py`
+- 
 - That's it! Program loads the orginal images from `src` folder and stores the watermarked images to `dest` folder consisting of individual users. We can identify the original user with which the image file was shared by reading and decoding the watermarked image.
