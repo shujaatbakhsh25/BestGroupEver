@@ -92,29 +92,31 @@ def add_watermark(path, seed_list, alp, method, n):
     img = cv2.imread(path)
     colors = cv2.split(img) # You have to split the colors, otherwise DWT doesn't work.
     im_list = []
+    c_coeffs = []
 
 
     for c in range(3):
         A = colors[c]
         coeffs = pywt.wavedec2(A, method)
+        c_coeffs.append(coeffs)
 
-        #Adding a loop to input multiple seeds
 
-        for k in range(len(seed_list)):
-            seed = seed_list[k]
-            colors_w = []
-            w = con_to_bit(seed, n)
+    #Adding a loop to input multiple seeds
 
+    for k in range(len(seed_list)):
+        seed = seed_list[k]
+        w = con_to_bit(seed, n)
+        colors_w = []
+        for c in range(3):
+            coeffs = c_coeffs[c]
             np_coeffs = [np.asarray(x) for x in coeffs]
             for j in range(len(coeffs[-2])):
                 B = coeffs[-2][j]
                 Bp = code_embed(B, w, alp)
                 np_coeffs[-2][j] = Bp
-
             new_coeffs = [np_coeffs[0]]
             for i in range(1, len(np_coeffs)):
                 new_coeffs.append((np_coeffs[i][0],np_coeffs[i][1], np_coeffs[i][2]))
-
             Aw = image_rec(new_coeffs, method)
             colors_w.append(Aw)
         img_w = cv2.merge(colors_w)

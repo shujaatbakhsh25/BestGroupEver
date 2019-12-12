@@ -5,6 +5,25 @@ import pyzbar.pyzbar as pyzbar
 import qrcode
 from Add_WatermarkV3 import con_to_bit
 
+def w_avg(data):
+    '''
+    This fun should take an array of bit streams, and then return the average bit stream.
+    :param data: 2D Array of {-1,1}
+    :return: the average bit stream
+    '''
+
+    #data_s = data[0] + data[1] + data[2]
+    data_s = data[0]
+    for i in range(1, len(data)):
+        data_s = data_s + data[i]
+
+    w_b = []
+    for i in range(len(data_s)):
+        if data_s[i] > 0: w_b.append(1)
+        else: w_b.append(-1)
+
+    return np.array(w_b)
+
 def code_ext(OG, W,  L, alp, n):
 
     '''
@@ -176,7 +195,7 @@ def decode_test(path_OG, path_W, L, alp, method, seed, n):
     :param n: int
     :return:
     '''
-    w_og = con_to_bit(seed)
+    w_og = con_to_bit(seed, n)[:441]
     colors_OG = cv2.split(cv2.imread(path_OG))
     colors_W = cv2.split(cv2.imread(path_W))
     codes = []
