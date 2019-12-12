@@ -64,7 +64,6 @@ def blank_QR():
     img_bin = img_array.astype(int)
     img_bin = np.uint8(img_bin)
     return img_bin
-
 def make_QR(string):
     '''
     This should take a binary string and turn it into a QR code.
@@ -200,7 +199,6 @@ def decode_test(path_OG, path_W, L, alp, method, seed, n):
     colors_W = cv2.split(cv2.imread(path_W))
     codes = []
     bits = []
-
     for c in range(3):
         OG_c = colors_OG[c]
         W_c = colors_W[c]

@@ -8,6 +8,8 @@ Date: 10/26/2019
 import numpy as np
 import csv
 from PIL import Image, ImageDraw, ImageFont
+import os
+
 
 def add_watermark(path, seed, pos):
     '''
@@ -20,13 +22,12 @@ def add_watermark(path, seed, pos):
     '''
 
     im = Image.open(path).convert("RGBA")
-    #draw = ImageDraw.Draw(im)
     width, height = im.size
     wm = gen_watermark(seed, pos, width, height)
     out = Image.alpha_composite(im, wm)
 
-
     return out
+
 
 def gen_watermark(seed, pos, width, height):
     '''
@@ -39,15 +40,16 @@ def gen_watermark(seed, pos, width, height):
     '''
 
     txt = Image.new('RGBA', (width, height),  (255, 255, 255, 0))
-    fnt = ImageFont.truetype('C:\Windows\Fonts\Arial.ttf', 40) # you might want to edit this part.
+    fnt = ImageFont.truetype(os.getenv('FONT_FILE'), 40)
     d = ImageDraw.Draw(txt)
     d_w = np.ceil(width * pos[0])
     d_h = np.ceil(height * pos[1])
-    d.text((d_w, d_h), seed, font=fnt ,fill=(255, 255, 255, 255))
+    d.text((d_w, d_h), seed, font=fnt, fill=(255, 255, 255, 255))
     return txt
 
+
 if __name__ == "__main__":
-    image_path = 'test.png'
+    image_path = 'test.png'  # mention path of image to be watermarked
     code = 'AA0010'
     pos = [0.5, 0.5]
     image_wm = add_watermark(image_path, code, pos)
