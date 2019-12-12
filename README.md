@@ -1,4 +1,4 @@
-# Digital Watermarking
+# Digital Watermarking of Images
 
 ## BestGroupEver - Final Project | Financial Technology (FE595)
 
@@ -19,6 +19,6 @@ This is the code for digital watermarking of images. We have built a model which
 - Once dependencies are installed, download the project directory.
 - Make sure the current directory is the project root directory.
 - Put the images to be watermarked in `src` folder
-- Run `python3 main.py`
-- 
-- That's it! Program loads the orginal images from `src` folder and stores the watermarked images to `dest` folder consisting of individual users. We can identify the original user with which the image file was shared by reading and decoding the watermarked image.
+- Run `python3 main.py` (`main.py` program calls `Add_WatermarkV3.py` to generate a list of unique images/arrays for the users defined in `users.csv`)
+- That's it! Program loads all the orginal images from `src` folder and stores the watermarked images to `dest` folder consisting of individual users. 
+- We can identify the original user with which the image file was shared by reading and decoding the watermarked image.
