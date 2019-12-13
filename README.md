@@ -26,8 +26,8 @@ This is the code for digital watermarking of images. We have built a model which
 Here are some of the results comparing original and watermarked images.
 
 <p align="center">
-  <img src="https://github.com/shujaatbakhsh25/BestGroupEver/blob/PreetyV-patch-2/src/Test6.png" width="350" title=" ">
-  <img src="https://github.com/shujaatbakhsh25/BestGroupEver/blob/PreetyV-patch-2/dest/IC_Wiener3000/Test6.png" width="350" alt=" ">
-  <img src="https://github.com/shujaatbakhsh25/BestGroupEver/blob/PreetyV-patch-2/src/Test5.png" width="350" title=" ">
-  <img src="https://github.com/shujaatbakhsh25/BestGroupEver/blob/PreetyV-patch-2/dest/IC_Wiener3000/Test5.png" width="350" title=" ">
+  <img src="https://github.com/shujaatbakhsh25/BestGroupEver/blob/master/src/Test6.png" width="350" title=" ">
+  <img src="https://github.com/shujaatbakhsh25/BestGroupEver/blob/master/dest/IC_Wiener3000/Test6.png" width="350" alt=" ">
+  <img src="https://github.com/shujaatbakhsh25/BestGroupEver/blob/master/src/Test5.png" width="350" title=" ">
+  <img src="https://github.com/shujaatbakhsh25/BestGroupEver/blob/master/IC_Wiener3000/Test5.png" width="350" title=" ">
 </p>
