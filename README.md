@@ -7,7 +7,7 @@
 ### Overview
 
 This is the code for digital watermarking of images. We have built a model which embeds watermark to images and decodes it, which can be used to trace the original user with whom it was shared. This technology helps in protecting the author's work and rights, and ultimately preventing piracy.\
-This project's crux lies in the idea of a [Canary Trap](https://en.wikipedia.org/wiki/Canary_trap).
+This project's crux lies in the idea of a [Canary Trap](https://en.wikipedia.org/wiki/Canary_trap). A set of images is watermarked with a code unqiue to each user and then the media is distributed. In case there is a leak of this media, the embedded watermark can be decoded from the leaked image and connected to the person who leaked it. 
 
 ### Requirements
 
