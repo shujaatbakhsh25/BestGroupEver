@@ -23,7 +23,7 @@ This is the code for digital watermarking of images. We have built a model which
 
 ### Results
 
-Here are some of the results comparing original and watermarked images.
+Here are some of the results comparing original and watermarked images.\
 The left one is original image and right one is watermarked image.
 
 <p align="center">
