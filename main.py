@@ -1,10 +1,10 @@
 import os
-from Decoder import *
+from DecoderV3 import *
 from Watermark import *
 from dotenv import load_dotenv
 load_dotenv(os.path.join(os.getcwd(), '.env'))
 
-set_tesseract_executable()
+# set_tesseract_executable()
 
 
 def createImagePathPairs():
@@ -26,7 +26,11 @@ if __name__ == "__main__":
     makeUserDirectories()
     watermark()
     for i in createImagePathPairs():
+        n = 3
+        L = 21 *21
+        alp = 0.50
+        method = 'haar'
         print(f'\noriginal image ---> f{i[0]}\n')
         print(f'watermarked image ---> f{i[1]}\n')
-        code = decode_watermark(i[1])
+        code = decode_watermark(i[0], i[1], L, alp, method, n)
         print(f'watermark read ---> {code}\n')

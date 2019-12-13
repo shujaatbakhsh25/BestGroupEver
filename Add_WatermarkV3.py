@@ -132,4 +132,4 @@ if __name__ == "__main__":
     method = 'haar'
     n = 3
     image_watermarks = add_watermark(image_path, seed, alp, method, n)
-    cv2.imwrite('Test_W.jpg', image_watermarks[0])
+    cv2.imwrite('Test_W.jpg', image_watermarks[3])

@@ -222,14 +222,15 @@ def decode_test(path_OG, path_W, L, alp, method, seed, n):
 if __name__ == "__main__":
     path_OG = 'Test.jpg'
     path_W = 'Test_W.jpg'
-    seed = """ASDFGHJ"""
+    seed = """ZXZXCVB"""
     seed_bin = seed.encode()
-    #L = len(seed_bin)-2
+    # L = len(seed_bin)-2
     #L = 128 # make sure to change that if you change the seed!
     n = 3
     L = 21 *21
     alp = 0.50
     method = 'haar'
     codes = decode_watermark(path_OG, path_W, L, alp, method, n)
+    # print(codes)
 
 
