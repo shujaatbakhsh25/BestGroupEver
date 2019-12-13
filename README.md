@@ -10,11 +10,7 @@ This is the code for digital watermarking of images. We have built a model which
 
 ### Requirements
 
-1. `pip install -r requirements.txt`
-2. Download Tesseract from [here](https://github.com/tesseract-ocr/tesseract/wiki/Downloads).
-3. The project's root directory must have a `.env` file.
-4. This `.env` file contains two variables `TESERRACT_EXECUTABLE` which should be assigned a value of complete path of the `tesseract.exe` file and `FONT_FILE` which should be assigned a value of the complete path of a `.ttf` font file (Arial used and preferred).
-5. The environment variables must be assigned full pathnames as per the operating system.
+`pip install -r requirements.txt`
 
 ### Usage
 
