@@ -1,6 +1,5 @@
 numpy==1.17.3
 PyWavelets==1.0.3
-python-dotenv==0.10.3
 pyzbar==0.1.8
 qrcode==6
 opencv==3.4.2
