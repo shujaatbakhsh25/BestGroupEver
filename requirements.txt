@@ -1,11 +1,5 @@
-pytesseract==0.3.0
-scikit-image==0.15.0
-numpy==1.17.2
-PyWavelets==1.1.1
-matplotlib==3.1.1
-Pillow==6.2.1
+numpy==1.17.3
+PyWavelets==1.0.3
 python-dotenv==0.10.3
 pyzbar==0.1.8
 qrcode==6.1
-reedsolo==0.3
-
