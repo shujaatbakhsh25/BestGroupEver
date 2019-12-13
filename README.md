@@ -29,6 +29,6 @@ The left one is original image and right one is watermarked image.
 <p align="center">
   <img src="https://github.com/shujaatbakhsh25/BestGroupEver/blob/master/src/Test6.png" width="350" title=" ">
   <img src="https://github.com/shujaatbakhsh25/BestGroupEver/blob/master/dest/IC_Wiener3000/Test6.png" width="350" alt=" ">
-  <img src="https://github.com/shujaatbakhsh25/BestGroupEver/blob/master/src/Test7.png" width="350" title=" ">
-  <img src="https://github.com/shujaatbakhsh25/BestGroupEver/blob/master/IC_Wiener3000/Test7.png" width="350" title=" ">
+  <img src="https://github.com/shujaatbakhsh25/BestGroupEver/blob/master/src/Test5.png" width="350" title=" ">
+  <img src="https://github.com/shujaatbakhsh25/BestGroupEver/blob/master/dest/IC_Wiener3000/Test5.png" width="350" title=" ">
 </p>
