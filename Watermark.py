@@ -1,7 +1,7 @@
 import os
 import csv
 import shutil
-from BestGroupEver.Add_WatermarkV3 import *
+from Add_WatermarkV3 import *
 
 
 def createUserList(user_path, user_file):
@@ -46,10 +46,10 @@ def watermark(user_path, user_file, dest_path, pic_path, pic_type, alp, method, 
 
 
 if __name__ == "__main__":
-    user_path = 'BestGroupEver/src'
+    user_path = 'src'
     user_file = 'users.csv'
-    dest_path = 'BestGroupEver/dest'
-    pic_path = 'BestGroupEver/src'
+    dest_path = 'dest'
+    pic_path = 'src'
     pic_type = '.png'
     alp = 0.5
     method = 'haar'
